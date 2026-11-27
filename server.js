@@ -33,6 +33,12 @@ app.use('/v1/bodega', bodegas.manejarError);
 app.use('/v1', require('./src/routes/catalogos.routes'));
 app.use('/v1/productos', require('./src/controllers/productos.controller').manejarError);
 
+const empresas = require('./src/routes/empresas.routes');
+app.use('/v1/empresas', empresas.router);
+app.use('/v1/empresas', empresas.manejarError);
+
+app.use('/v1/panel', require('./src/routes/panel.routes'));
+
 app.listen(puerto, '127.0.0.1', (error) => {
   if (error) {
     console.error('No se pudo iniciar el CRUD:', error.message);
